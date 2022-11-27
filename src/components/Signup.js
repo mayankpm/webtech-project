@@ -1,6 +1,13 @@
 import React from 'react'
+import {useNavigate} from "react-router-dom"
 
 export default function Signup() {
+
+    const navigate = useNavigate();
+    const navigateToLogin = () => {
+    navigate('/');
+    }
+
   return (
     <>
         <div>
@@ -36,7 +43,7 @@ export default function Signup() {
                                 <input type="submit" value="Sign Up" name=""/>
                             </div>
                             <div className="inputBx">
-                                <p>Have an account already? <a href="login.html">Sign In</a></p>
+                                <p>Have an account already? <a href='/' onClick={navigateToLogin}>Sign In</a></p>
                             </div>
                         </form>
                     </div>

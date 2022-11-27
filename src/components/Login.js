@@ -1,7 +1,13 @@
 import React from 'react'
 // import {BrowserRouter as Router,Route, Routes } from 'react-router-dom'
 // import Signup from './Signup'
+import {useNavigate} from "react-router-dom"
 export default function Login() {
+
+    const navigate = useNavigate();
+    const navigateToSignup = () => {
+    navigate('/signup');
+  };
 
 
   return (
@@ -30,7 +36,9 @@ export default function Login() {
                             <div className="inputBx">
                                 <input type="submit" value="Sign in" name=""/>
                             </div>  
-                          
+                            <div class="inputBx">
+                        <p><br/>Dont't have an account? <a href="signup" onClick={navigateToSignup}>Sign up</a></p>
+                    </div>
                         </form>
                     </div>
                 </div>
