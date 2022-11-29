@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import generatePassword from "./password";
 import PasswordDisplay from "./PasswordDisplay";
 import CheckBoxes from "./Checkboxes";
-import Tips from "./Tips";
+// import Tips from "./Tips";
 import ThemeToggle from "./ThemeToggle";
 import { ThemeContext } from "./Context/Theme";
 import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from "@mui/material"
@@ -141,7 +141,7 @@ export default function Generate() {
           </div>
           <br />
           <br />
-          <Tips />
+          {/* <Tips /> */}
         </div>
         <Footer></Footer>
       </div>

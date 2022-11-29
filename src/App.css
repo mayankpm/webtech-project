@@ -16,6 +16,7 @@ section
 section .imgBx
 {
     position: relative;
+    background-image: linear-gradient(225deg,#343182de,#000000);
     width: 50%;
     height: 100%;
 }
@@ -27,7 +28,6 @@ section .imgBx:before
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(225deg,#343182de,#000000);
     z-index: 1;
     mix-blend-mode: screen;
 }
@@ -217,10 +217,61 @@ section .contentBx .formBx .sci li
     z-index: -1;
   }
 
-  
 
-/* 
-  section .contentBx .formBx .signup
-{
-    text-decoration: underline;
-} */
+
+
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&family=Roboto:wght@400;500&display=swap');
+
+* {
+  font-family: Poppins;
+}
+
+.register-main {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+  padding: 20px;
+}
+
+
+.center {
+  margin: auto;
+  width: 50%;
+  background-color: white;
+  padding: 10px;
+}
+
+.inputs-container{
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  position: absolute;
+  left: 50%;
+  top: 35%;
+  transform: translate(-50%, -35%);
+}
+
+.input-fields{
+  margin: 5px;
+  height: 30px;
+  padding: 10px;
+  border: 1px solid #bdbdbd;
+  outline: none;
+}
+
+.input-fields:focus{
+  border: 2px solid #ffc107;
+}
+
+.input-btn{
+  margin: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  border: 1px solid #bdbdbd;
+  background-color: #009688;
+  color: white;
+  cursor: pointer;
+}
