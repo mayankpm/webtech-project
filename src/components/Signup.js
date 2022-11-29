@@ -1,15 +1,46 @@
-import React from 'react'
-import {useNavigate} from "react-router-dom"
+import React, {Component} from 'react';
 
-export default function Signup() {
+export default class Signup extends Component{
 
-    const navigate = useNavigate();
-    const navigateToLogin = () => {
-    navigate('/');
+    constructor(props){
+        super(props)
+        this.state={
+            name:"",
+            email:"",
+            password:"",
+            cpassword:"",
+        };
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
+    
+    handleSubmit(e){
+        e.preventDefault();
+        const {name,email,password,cpassword} = this.state;
+        console.log(name,email,password,cpassword);
+        fetch("http://localhost:5000/register",{
+            method:"POST",
+            crossDomain:true,
+            headers:{
+                "Content-Type":"application/json",
+                Accept:"application/json",
+                "Access-Control-Allow-Origin":"*",
+            },
+            body:JSON.stringify({
+                name,
+                email,
+                password,
+                cpassword
+            }),
+        }).then((res)=>res.json())
+        .then((data)=>{
+            console.log(data,"userRegister");
+        })
     }
 
+    render() {
   return (
-    <>
+    
+        <form onSubmit={this.handleSubmit}>
         <div>
             <section>
                 <div className="imgBx">
@@ -18,38 +49,55 @@ export default function Signup() {
                 <div className="contentBx">
                     <div className="formBx">
                         <h2><br/><br/>Sign Up</h2>
-                        <form>
+                        
                             <div className="inputBx">
                                 <span>Email Address</span>
-                                <input type="text" name=""/>
+                                <input type="text" name=""
+                                onChange={(e)=>this.setState({email:e.target.value})} />
                             </div>
                             <div className="inputBx">
                                 <span>Username</span>
-                                <input type="text" name=""/>
+                                <input type="text" name=""
+                                onChange={(e)=>this.setState({name:e.target.value})}/>
                             </div>
                             <div className="inputBx">
                                 <span><br/>Password</span>
-                                <input type="password" name=""/>
+                                <input type="password" name=""
+                                onChange={(e)=>this.setState({password:e.target.value})}/>
                             </div>
                             <div className="inputBx">
                                 <span><br/>Confirm Password</span>
-                                <input type="password" name=""/>
+                                <input type="password" name=""
+                                onChange={(e)=>this.setState({cpassword:e.target.value})}/>
                             </div>
                             <div className="remember">
                                 <br/><br/>
                                 <label><input type="checkbox" name=""/> I have read and agreed to the terms and conditions</label>
                             </div>
                             <div className="inputBx">
-                                <input type="submit" value="Sign Up" name=""/>
+                                <button type="submit" className="c">
+                                    Sign Up
+                                </button>
                             </div>
                             <div className="inputBx">
-                                <p>Have an account already? <a href='/' onClick={navigateToLogin}>Sign In</a></p>
+                                <p>Have an account already? <CustomLink href='/Login'>Sign In</CustomLink></p>
                             </div>
-                        </form>
+                        
                     </div>
                 </div>
             </section>
         </div>
-    </>
+        </form>
+
   )
+}
+}
+
+function CustomLink({ href,children, ...props }) {
+    const path = window.location.pathname
+    return(
+        <div className={path === href ? "active":""}>
+            <a href={href} {...props}>{children}</a>
+        </div>
+    )
 }

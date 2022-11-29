@@ -37,7 +37,7 @@ export default function Login() {
                                 <input type="submit" value="Sign in" name=""/>
                             </div>  
                             <div class="inputBx">
-                        <p><br/>Dont't have an account? <a href="signup" onClick={navigateToSignup}>Sign up</a></p>
+                        <p><br/>Dont't have an account? <a onClick={navigateToSignup}>Sign up</a></p>
                     </div>
                         </form>
                     </div>
