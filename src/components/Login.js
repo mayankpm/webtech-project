@@ -1,6 +1,4 @@
 import React from 'react'
-// import {BrowserRouter as Router,Route, Routes } from 'react-router-dom'
-// import Signup from './Signup'
 import {useNavigate} from "react-router-dom"
 export default function Login() {
 
@@ -8,6 +6,12 @@ export default function Login() {
     const navigateToSignup = () => {
     navigate('/signup');
   };
+
+
+  const nav = useNavigate();
+  const navToHomepage = () => {
+  nav('/homepage');
+};
 
 
   return (
@@ -34,8 +38,10 @@ export default function Login() {
                                 <label><input type="checkbox" name=""/> Remember me</label>
                             </div>
                             <div className="inputBx">
-                                <input type="submit" value="Sign in" name=""/>
-                            </div>  
+                                <button type="submit" className="c" onClick={navToHomepage}>
+                                    Log In
+                                </button>
+                            </div>
                             <div class="inputBx">
                         <p><br/>Dont't have an account? <a onClick={navigateToSignup}>Sign up</a></p>
                     </div>

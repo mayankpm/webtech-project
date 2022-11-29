@@ -4,6 +4,7 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
+import axios from 'axios';
 
 const style = {
   top: '50%',
@@ -23,14 +24,25 @@ export default function BasicModal({
   handleClose
 }) {
 
-  const [usernameObject, setUsernameObject] = useState('');
+    const [usernameObject, setUsernameObject] = useState('');
     const [passwordObject, setPasswordObject] = useState('');
+
     const [message,setMessage] = useState('');
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async(event) => {
         event.preventDefault();
 
         setMessage('${usernameObject} ${passwordObject}');
+        try{
+          const data={
+            "domain":usernameObject,
+            "password":passwordObject
+          }
+          const result = await axios.post("http://localhost:3004/users/dp",data);
+        }
+        catch(e){
+          console.log(e);
+        }
         setUsernameObject('');
         setPasswordObject('');
     };
@@ -75,8 +87,8 @@ export default function BasicModal({
           />
 
           <button 
-                // onClick={handleOpen}
-          className='input-btn add-password'> Add a password </button>
+                 onClick={handleSubmit}
+          className='btn btn-primary btn-lg'> Add  </button>
 
         </Box>
       </Modal>
